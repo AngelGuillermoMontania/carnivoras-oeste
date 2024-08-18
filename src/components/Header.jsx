@@ -18,6 +18,7 @@ import {
   HiChevronUp,
 } from "react-icons/hi2";
 import imageLogo from "../assets/images/logo.jfif";
+import { Link, useNavigate } from "react-router-dom";
 
 const nestedMenuItems = [
   {
@@ -156,15 +157,9 @@ function NavList() {
   return (
     <List className="mb-6 mt-4 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1">
       <NavListMenu />
-      <Typography
-        as="a"
-        href="#"
-        variant="small"
-        color="blue-gray"
-        className="font-medium"
-      >
+      <Typography variant="small" color="blue-gray" className="font-medium">
         <ListItem className="flex items-center gap-2 py-2 pr-4">
-          Lista De Precios
+          <Link to="/listaPrecios">Lista De Precios</Link>
         </ListItem>
       </Typography>
       <Typography
@@ -185,6 +180,7 @@ function NavList() {
 export default function Header() {
   const [openNav, setOpenNav] = useState(false);
 
+  const navigate = useNavigate();
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -195,15 +191,16 @@ export default function Header() {
   return (
     <Navbar className="mx-auto max-w-screen-xl px-4 py-2">
       <div className="flex items-center justify-between text-blue-gray-900">
-        <div className="flex items-center justify-around">
+        <div
+          className="flex items-center justify-around"
+          onClick={() => navigate("/")}
+        >
           <img
             className="h-16 w-16 rounded-full object-cover object-center"
             src={imageLogo}
             alt="nature image"
           />
           <Typography
-            as="a"
-            href="#"
             variant="h6"
             className="mr-4 cursor-pointer py-1.5 lg:ml-2"
           >
